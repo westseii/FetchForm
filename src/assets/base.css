@@ -1,3 +1,5 @@
 :root {
-  --vt-c-white: #ffffff;
+  --vt-c-white: #fff;
+
+  --vt-scott-background: hsl(0, 0%, 95%);
 }

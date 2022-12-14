@@ -5,6 +5,7 @@
 <template>
   <header>
     <h1>FetchForm</h1>
+    <hr />
     <FetchForm />
   </header>
   <main></main>
