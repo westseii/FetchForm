@@ -1,4 +1,5 @@
 @import "./base.css";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 #app {
   margin: 0 auto;
@@ -6,6 +7,26 @@
   padding: 2rem;
 }
 
+html {
+  font-size: 10px;
+}
+
 body {
-  background: var(--vt-scott-background);
+  background: var(--scott-background);
+  color: var(--scott-text);
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
+}
+
+hr.fetch-rule {
+  background: var(--scott-accent-l);
+  border-radius: 2px;
+  border: none;
+  height: 4px;
+}
+hr.fetch-rule-thin {
+  background: var(--scott-accent-l);
+  border-radius: 1px;
+  border: none;
+  height: 2px;
 }

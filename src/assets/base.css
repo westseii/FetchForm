@@ -1,5 +1,7 @@
 :root {
   --vt-c-white: #fff;
 
-  --vt-scott-background: hsl(0, 0%, 95%);
+  --scott-accent-l: hsl(0, 0%, 90%);
+  --scott-background: hsl(0, 0%, 95%);
+  --scott-text: hsl(0, 0%, 10%);
 }

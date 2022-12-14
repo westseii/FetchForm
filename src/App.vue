@@ -5,10 +5,11 @@
 <template>
   <header>
     <h1>FetchForm</h1>
-    <hr />
-    <FetchForm />
+    <hr class="fetch-rule" />
   </header>
-  <main></main>
+  <main>
+    <FetchForm />
+  </main>
 </template>
 
 <style scoped></style>

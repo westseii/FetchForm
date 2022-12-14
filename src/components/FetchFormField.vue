@@ -7,13 +7,13 @@
     inputType: {
       type: String,
       default: "text",
-      validator: (value) => ["text", "password"].includes(value),
+      validator: (value) => ["text", "email", "password"].includes(value),
     },
     inputPlaceholder: {
       type: String,
     },
 
-    // for v-model two-way data binding
+    // for v-model; two-way data binding for this component
     modelValue: String,
   });
 
