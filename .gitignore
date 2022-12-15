@@ -28,3 +28,4 @@ coverage
 *.sw?
 
 *.code-workspace
+FetchFormSelect.vue
