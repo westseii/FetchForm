@@ -4,6 +4,9 @@
       type: String,
       default: "Label",
     },
+    inputName: {
+      type: String,
+    },
     inputType: {
       type: String,
       default: "text",
@@ -31,11 +34,11 @@
     <br />
     <input
       :id="labelText"
+      :name="inputName"
       :placeholder="inputPlaceholder"
       :type="inputType"
       :value="modelValue"
       @input="updateValue"
-      name=""
     />
   </div>
 </template>
