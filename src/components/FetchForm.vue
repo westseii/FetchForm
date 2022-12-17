@@ -3,16 +3,16 @@
   import FetchFormField from "./FetchFormField.vue";
   import { userFormSubmit } from "../js/user_form_f.js";
 
-  // TODO: form validation? suspense? component/css library?
+  // TODO: form validation? suspense? component/css library? maybe Axios
 
   const email = "westseii8919@gmail.com"; // test
   const formSubmitCo = `https://formsubmit.co/${email}`; // test
-  const endpoint = "https://frontend-take-home.fetchrewards.com/form"; // same for post
-  const endpointData = ref();
+  const fetchEndpoint = "https://frontend-take-home.fetchrewards.com/form"; // same for post
+  const fetchEndpointData = ref();
 
   const isFilled = computed(() => true);
 
-  const userValues = reactive({
+  const userData = reactive({
     name: "",
     email: "",
     password: "",
@@ -25,11 +25,11 @@
   // functionality
   // TODO: explore async components/suspense api
   const fetchData = async () => {
-    const response = await fetch(endpoint);
+    const response = await fetch(fetchEndpoint);
     const data = await response.json();
     // console.log(response.ok);
     // console.log(response.status);
-    endpointData.value = data;
+    fetchEndpointData.value = data;
   };
 
   const showDataModel = ref(false);
@@ -44,27 +44,27 @@
     <h2>User form</h2>
 
     <form
-      :action="formSubmitCo"
-      method="post"
+      :action="fetchEndpoint"
+      method="POST"
     >
       <!-- full name, email, and password -->
       <FetchFormField
         input-name="name"
         input-placeholder="First Last"
         label-text="Full Name"
-        v-model="userValues.name"
+        v-model="userData.name"
       /><br />
       <FetchFormField
         input-name="email"
         input-type="email"
         label-text="Email"
-        v-model="userValues.email"
+        v-model="userData.email"
       /><br />
       <FetchFormField
         input-name="password"
         input-type="password"
         label-text="Password"
-        v-model="userValues.password"
+        v-model="userData.password"
       /><br />
 
       <!-- occupation and state -->
@@ -73,7 +73,7 @@
         <select
           id="occupation"
           name="occupation"
-          v-model="userValues.occupation"
+          v-model="userData.occupation"
         >
           <option
             disabled
@@ -84,8 +84,8 @@
           </option>
           <option
             :value="job"
-            v-for="job in endpointData.occupations"
-            v-if="endpointData"
+            v-for="job in fetchEndpointData.occupations"
+            v-if="fetchEndpointData"
           >
             {{ job }}
           </option>
@@ -98,7 +98,7 @@
         <select
           id="state"
           name="state"
-          v-model="userValues.state"
+          v-model="userData.state"
         >
           <option
             disabled
@@ -109,8 +109,8 @@
           </option>
           <option
             :value="state.abbreviation"
-            v-for="state in endpointData.states"
-            v-if="endpointData"
+            v-for="state in fetchEndpointData.states"
+            v-if="fetchEndpointData"
           >
             {{ state.abbreviation }} &#8211; {{ state.name }}
           </option>
@@ -119,7 +119,7 @@
       <br />
 
       <button
-        @click="userFormSubmit(userValues)"
+        @click.prevent="userFormSubmit(userData, fetchEndpoint)"
         type="submit"
       >
         Submit
@@ -133,7 +133,7 @@
       class="display-binds"
       v-show="showDataModel"
     >
-      <pre>{{ userValues }}</pre>
+      <pre>{{ userData }}</pre>
     </div>
   </div>
 </template>
