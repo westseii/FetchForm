@@ -1,5 +1,5 @@
 <script setup>
-  import { computed, onBeforeMount, reactive, ref } from "vue";
+  import { onBeforeMount, reactive, ref } from "vue";
   import FetchFormField from "./FetchFormField.vue";
   import { userFormSubmit } from "../js/user_form_f.js";
 
@@ -9,8 +9,6 @@
   const formSubmitCo = `https://formsubmit.co/${email}`; // test
   const fetchEndpoint = "https://frontend-take-home.fetchrewards.com/form"; // same for post
   const fetchEndpointData = ref();
-
-  const isFilled = computed(() => true);
 
   const userData = reactive({
     name: "",
@@ -43,10 +41,7 @@
   <div>
     <h2>User form</h2>
 
-    <form
-      :action="fetchEndpoint"
-      method="POST"
-    >
+    <form>
       <!-- full name, email, and password -->
       <FetchFormField
         input-name="name"
