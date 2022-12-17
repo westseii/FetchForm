@@ -1,14 +1,18 @@
+// TODO: use something like VeeValidate library if this were production
+function checkObjectValues(object) {
+  for (const key in object) {
+    if (object[key] === null || object[key] === "") return false;
+  }
+  return true;
+}
+
 // post JSON to endpoint and await response body
 function sendUserFormJSON(data, url) {
   const xhr = new XMLHttpRequest();
 
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      result.innerHTML = this.responseText;
-    }
-  };
+
   const dataString = JSON.stringify(data);
   xhr.send(dataString);
 }
@@ -16,10 +20,16 @@ function sendUserFormJSON(data, url) {
 // perform very crude validation of user data; non-empty fields
 function userFormSubmit(data, url) {
   // validate
-  // ...
+  const isCrudelyValid = checkObjectValues(data);
 
-  //
-  sendUserFormJSON(data, url);
+  if (isCrudelyValid) {
+    // valid
+    sendUserFormJSON(data, url);
+    return 0;
+  } else {
+    // invalid
+    return 1;
+  }
 }
 
 export { userFormSubmit };
