@@ -10,6 +10,11 @@ function checkObjectValues(object) {
 function sendUserFormJSON(data, url) {
   const xhr = new XMLHttpRequest();
 
+  // on success; this should probably load some sort of success modal and then redirect the user
+  xhr.onload = function () {
+    alert(`Data posted successfully. Status: ${xhr.status}`);
+  };
+
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-Type", "application/json");
 
